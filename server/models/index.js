@@ -1,2 +1,2 @@
 module.exports.Account = require('./Account.js');
-module.exports.Domo = require('./Domo.js');
+module.exports.This_object = require('./This_object.js');

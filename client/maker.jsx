@@ -4,84 +4,84 @@ const React = require('react');
 const {useState, useEffect } = React;
 const { createRoot } = require('react-dom/client');
 
-const handleDomo = (e, onDomoAdded) => {
+const handleThis_object = (e, onThis_objectAdded) => {
     e.preventDefault();
     helper.hideError();
 
-    const name = e.target.querySelector('#domoName').value;
-    const age = e.target.querySelector('#domoAge').value;
+    const name = e.target.querySelector('#this_objectName').value;
+    const age = e.target.querySelector('#this_objectAge').value;
 
     if(!name || !age){ 
         helper.handleError('All fields are required');
         return false;
     }
 
-    helper.sendPost(e.target.action, {name, age}, onDomoAdded);
+    helper.sendPost(e.target.action, {name, age}, onThis_objectAdded);
     return false;
 }
 
 //36
-const DomoForm = (props) => {
+const This_objectForm = (props) => {
     return(
-        <form id="domoForm"
-        onSubmit={(e) => handleDomo(e, props.triggerReload)}
-        name="domoForm"
+        <form id="this_objectForm"
+        onSubmit={(e) => handleThis_object(e, props.triggerReload)}
+        name="this_objectForm"
         action="/maker"
         method="POST"
-        className="domoForm"
+        className="this_objectForm"
 >
         <label htmlFor="name">Name:  </label>
-        <input id="domoName" type="text" name="name" placeholder="Domo Name" />
+        <input id="this_objectName" type="text" name="name" placeholder="This_object Name" />
         <label htmlFor="age">Age:  </label>
-        <input id="domoAge" type="number" min="0" name="age" />
-        <input className="makeDomoSubmit" type="submit" value="Make Domo" />
+        <input id="this_objectAge" type="number" min="0" name="age" />
+        <input className="makeThis_objectSubmit" type="submit" value="Make This_object" />
 </form>
 
     );
 };
 
 //37 
-const DomoList = (props) => {
-    const [domos, setDomos] = useState(props.domos); 
+const This_objectList = (props) => {
+    const [this_objects, setThis_objects] = useState(props.this_objects); 
 
     useEffect(() => {
-        const loadDomosFromServer = async () => {
-            const response = await fetch ('/getDomos');
+        const loadThis_objectsFromServer = async () => {
+            const response = await fetch ('/getThis_objects');
             const data = await response.json();
-            setDomos(data.domos);
+            setThis_objects(data.this_objects);
 
         };
-        loadDomosFromServer();
-    }, [props.reloadDomos]);
+        loadThis_objectsFromServer();
+    }, [props.reloadThis_objects]);
 
-    if (domos.length === 0) {
+    if (this_objects.length === 0) {
         return (
-            <div className="domoList">
-                <h3 className="emptyDomo">No Domos Yet!</h3>
+            <div className="this_objectList">
+                <h3 className="emptyThis_object">No This_objects Yet!</h3>
             </div>
         );
     }
 
-    const domoNodes = domos.map(domo => {
+    const this_objectNodes = this_objects.map(this_object => {
         return(
-            <div key={domo.id} className="domo">
-                <img src="/assets/img/domoface.jpeg" alt="domo face" className="domoFace" />
-                <h3 className="domoName">Name: {domo.name}</h3>
-                <h3 className="domoAge">Age: {domo.age}</h3>
+            <div key={this_object.id} className="this_object">
+                <img src="/assets/img/this_objectface.jpeg" alt="this_object face" className="this_objectFace" />
+                <h3 className="this_objectName">Name: {this_object.name}</h3>
+                <h3 className="this_objectAge">Age: {this_object.age}</h3>
             </div>
         );
     });
     
     return(
-        <div className="domoList">
-            {domoNodes}
+        <div className="this_objectList">
+            {this_objectNodes}
         </div>
     );
 
-};//end of DomoList
+};//end of This_objectList
 
 
-//DomoMakerE
+//This_objectMakerE
 const handlePasswordChange = (e) => {
   e.preventDefault();
   helper.hideError();
@@ -130,18 +130,18 @@ const ChangePasswordForm = () => {
 
 //38 
 const App = () => {
-    const [reloadDomos, setReloadDomos] = useState(false);
+    const [reloadThis_objects, setReloadThis_objects] = useState(false);
     return(
         
         <div>
             <div id="changePassword">
             <ChangePasswordForm />
             </div>
-            <div id="makeDomo">
-                <DomoForm triggerReload={() => setReloadDomos(!reloadDomos)} />
+            <div id="makeThis_object">
+                <This_objectForm triggerReload={() => setReloadThis_objects(!reloadThis_objects)} />
             </div>
-            <div id="domos">
-                <DomoList domos={[]} reloadDomos={reloadDomos} />
+            <div id="this_objects">
+                <This_objectList this_objects={[]} reloadThis_objects={reloadThis_objects} />
             </div>
         </div>
     );

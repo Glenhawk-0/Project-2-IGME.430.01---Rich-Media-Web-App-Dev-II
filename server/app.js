@@ -1,4 +1,4 @@
-// DomoMakerC step 5
+// This_objectMakerC step 5
 require('dotenv').config();
 
 const path = require('path');
@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 const helmet = require('helmet');
 const session = require('express-session');
-// DomoMakerC step 2
+// This_objectMakerC step 2
 // const RedisStore = require('connect-redis').RedisStore;
 const { RedisStore } = require('connect-redis');
 const redis = require('redis');
@@ -18,7 +18,7 @@ const router = require('./router.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-const dbURI = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
+const dbURI = process.env.MONGODB_URI || 'mongodb://localhost/This_objectMaker';
 
 mongoose.connect(dbURI).catch((err) => {
   if (err) {
@@ -27,7 +27,7 @@ mongoose.connect(dbURI).catch((err) => {
   }
 });
 
-// i think this is wher i put it?? domomakerC step 6
+// i think this is wher i put it?? this_objectmakerC step 6
 const redisClient = redis.createClient({
   url: process.env.REDISCLOUD_URL,
 });
@@ -35,7 +35,7 @@ const redisClient = redis.createClient({
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
 
 // i think this is wher i put it??
-// DomoMakerC step 7
+// This_objectMakerC step 7
 redisClient.connect().then(() => {
   const app = express();
 
@@ -51,11 +51,11 @@ redisClient.connect().then(() => {
 
   app.use(session({
     key: 'sessionid', // this is the name, by default its connect.sid
-    // domoMakerC step 8
+    // this_objectMakerC step 8
     store: new RedisStore({
       client: redisClient,
     }),
-    secret: 'Arigato', // is this a domo thing?
+    secret: 'Arigato', // is this a this_object thing?
     resave: false,
     saveUninitialized: false,
   }));

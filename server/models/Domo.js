@@ -3,7 +3,7 @@ const _ = require('underscore');
 
 const setName = (name) => _.escape(name).trim();
 
-const DomoSchema = new mongoose.Schema({
+const This_objectSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -26,10 +26,10 @@ const DomoSchema = new mongoose.Schema({
   },
 });
 
-DomoSchema.statics.toAPI = (doc) => ({
+This_objectSchema.statics.toAPI = (doc) => ({
   name: doc.name,
   age: doc.age,
 });
 
-const DomoModel = mongoose.model('Domo', DomoSchema);
-module.exports = DomoModel;
+const This_objectModel = mongoose.model('This_object', This_objectSchema);
+module.exports = This_objectModel;
