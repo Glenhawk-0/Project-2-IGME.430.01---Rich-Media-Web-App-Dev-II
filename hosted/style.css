@@ -47,7 +47,7 @@ nav:nth-child(1) {
     background-color: #66bdff;
 }
 
-.this_objectForm {
+.thisobjectForm {
     border: 2px solid #338acc;
     height: 35px;
     width: 700px;
@@ -58,7 +58,7 @@ nav:nth-child(1) {
     border-top-right-radius: 4px;
 }
 
-.this_objectForm label {
+.thisobjectForm label {
     display: inline-block;
     width: 75px;
     margin-left: 10px;
@@ -67,11 +67,11 @@ nav:nth-child(1) {
     color: white;
 }
 
-.this_objectForm input[type=text] {
+.thisobjectForm input[type=text] {
     float:left;
 }
 
-.makeThis_objectSubmit {
+.makeThisObjectSubmit {
     transition: background-color 0.4s ease;
     display: inline;
     width: 90px;
@@ -81,11 +81,11 @@ nav:nth-child(1) {
     text-decoration: none;
 }
 
-.makeThis_objectSubmit:link, .makeThis_objectSubmit:visited, .makeThis_objectSubmit:hover, .makeThis_objectSubmit:active {
+.makeThisObjectSubmit:link, .makeThisObjectSubmit:visited, .makeThisObjectSubmit:hover, .makeThisObjectSubmit:active {
     color: white;
 }
 
-.makeThis_objectSubmit:hover {
+.makeThisObjectSubmit:hover {
     transition: background-color 0.4s ease;
     background-color: #338acc;
 }
@@ -151,7 +151,7 @@ nav:nth-child(1) {
     display: none;
 }
 
-#this_objectMessage {
+#thisobjectMessage {
     top: 250px;
     width: 250px;
     height: 650px;
@@ -161,7 +161,7 @@ nav:nth-child(1) {
     overflow: hidden;
 }
 
-#this_objectMessage h3 {
+#thisobjectMessage h3 {
     width: 200px;
     position: absolute;
     top: 0px;
@@ -181,7 +181,7 @@ nav:nth-child(1) {
     font-style: italic;
 }
 
-#this_object {
+#thisobject {
     z-index: 225;
     margin-top: -20px;
     margin-left: 135px;
@@ -192,7 +192,7 @@ nav:nth-child(1) {
     transform: rotate(330deg);
 }
 
-#this_objects {
+#thisobjects {
     width: 40%;
     min-width: 400px;
     border: 2px solid #55acee;
@@ -201,7 +201,7 @@ nav:nth-child(1) {
     margin-top: 100px;
 }
 
-.this_object {
+.thisobject {
     width: 95%;
     margin: 0 auto;
     margin-top: 2px;
@@ -214,14 +214,14 @@ nav:nth-child(1) {
     overflow: hidden;
 }
 
-.this_object:hover {
+.thisobject:hover {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
     background-color: #66bfff;
 }
 
-img.this_objectFace {
+img.thisobjectFace {
     margin-left: 25px;
     margin-right: 10px;
     height: 50px;
@@ -231,7 +231,7 @@ img.this_objectFace {
     float:left;
 }
 
-h3.emptyThis_object {
+h3.emptyThisObject {
     width: 400px;
     font-size: 1.5em;
     margin: 0 auto;
@@ -239,7 +239,7 @@ h3.emptyThis_object {
     margin-top: 18px;
 }
 
-h3.this_objectName {
+h3.thisobjectName {
     float:left;
     width: 200px;
     font-weight: bold;
@@ -247,7 +247,7 @@ h3.this_objectName {
     font-size: 1.5em;
 }
 
-h3.this_objectAge {
+h3.thisobjectAge {
     float:right;
     text-align: left;
     width: 100px;
@@ -256,10 +256,11 @@ h3.this_objectAge {
     font-size: 1.5em;
 }
 
-.this_object:first-child {
+.thisobject:first-child {
     margin-top: 10px;
 }
 
-.this_object:last-child {
+.thisobject
+:last-child {
     margin-bottom:10px;
 }
