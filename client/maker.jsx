@@ -65,7 +65,7 @@ const ThisObjectList = (props) => {
     const thisobjectNodes = thisobjects.map(thisobject => {
         return(
             <div key={thisobject.id} className="thisobject">
-                <img src="/assets/img/thisobjectface.jpeg" alt="thisobject face" className="thisobjectFace" />
+                <img src="/assets/img/thisObjectface.jpeg" alt="thisobject face" className="thisobjectFace" />
                 <h3 className="thisobjectName">Name: {thisobject.name}</h3>
                 <h3 className="thisobjectAge">Age: {thisobject.age}</h3>
             </div>
