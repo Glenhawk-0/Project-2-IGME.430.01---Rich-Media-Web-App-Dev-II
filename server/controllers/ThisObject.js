@@ -6,13 +6,14 @@ const { ThisObject } = models; // const  ThisObject  = models.ThisObject;
 const makerPage = (req, res) => res.render('app');
 
 const makeThisObject = async (req, res) => {
-  if (!req.body.name || !req.body.age) {
-    return res.status(400).json({ error: 'Both name and age are required' });
+  if (!req.body.game || !req.body.time) {
+    return res.status(400).json({ error: 'Both game and time are required' });
   }
 
   const thisobjectData = {
-    name: req.body.name,
-    age: req.body.age,
+    game: req.body.game,
+    time: req.body.time,
+    video: req.body.video || '',
     owner: req.session.account._id,
   };
 
@@ -20,13 +21,19 @@ const makeThisObject = async (req, res) => {
     const newThisObject = new ThisObject(thisobjectData);
     await newThisObject.save();
     // return res.json({ redirect: '/maker' });
-    return res.status(201).json({ name: newThisObject.name, age: newThisObject.age });
+    return res.status(201).json({ 
+      game: newThisObject.game, 
+      time: newThisObject.time,
+      video: newThisObject.video,
+
+
+    });
   } catch (err) {
     console.log(err);
     if (err.code === 11000) {
-      return res.status(400).json({ error: 'ThisObject already exists!' });
+      return res.status(400).json({ error: 'speedrun already exists!' });
     }
-    return res.status(500).json({ error: 'An error occured making thisobject!' });
+    return res.status(500).json({ error: 'An error occured making the submission!' });
   }
 };// end makeThisObject
 
@@ -34,7 +41,7 @@ const makeThisObject = async (req, res) => {
 const getThisObjects = async (req, res) => {
   try {
     const query = { owner: req.session.account._id };
-    const docs = await ThisObject.find(query).select('name age').lean().exec();
+    const docs = await ThisObject.find(query).select('game time video').lean().exec();
 
     return res.json({ thisobjects: docs });
   } catch (err) {
