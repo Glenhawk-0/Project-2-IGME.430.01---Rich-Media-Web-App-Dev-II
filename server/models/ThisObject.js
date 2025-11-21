@@ -4,16 +4,21 @@ const _ = require('underscore');
 const setName = (name) => _.escape(name).trim();
 
 const ThisObjectSchema = new mongoose.Schema({
-  name: {
+  game: {
     type: String,
     required: true,
     trim: true,
     set: setName,
   },
-  age: {
+  time: {
     type: Number,
     min: 0,
     required: true,
+  },
+    video: {
+    type: String,
+    trim: true,
+    //required: true, // we may not need
   },
   owner: {
     type: mongoose.Schema.ObjectId,
@@ -27,8 +32,10 @@ const ThisObjectSchema = new mongoose.Schema({
 });
 
 ThisObjectSchema.statics.toAPI = (doc) => ({
-  name: doc.name,
-  age: doc.age,
+  game: doc.game,
+  time: doc.time,
+  video: doc.video,
+  owner: doc.owner,
 });
 
 const ThisObjectModel = mongoose.model('ThisObject', ThisObjectSchema);
