@@ -4,77 +4,87 @@ const React = require('react');
 const {useState, useEffect } = React;
 const { createRoot } = require('react-dom/client');
 
-const handleThisObject = (e, onThisObjectAdded) => {
+const handleSubmitSpeedrun = (e, onSpeedrunAdded) => {
     e.preventDefault();
     helper.hideError();
 
-    const name = e.target.querySelector('#thisobjectName').value;
-    const age = e.target.querySelector('#thisobjectAge').value;
-
-    if(!name || !age){ 
-        helper.handleError('All fields are required');
+        const game = e.target.querySelector('#speedrunGame').value;
+        const time = e.target.querySelector('#speedrunTime').value;
+        const video = e.target.querySelector('#speedrunVideo').value;
+    
+    if(!game || !time){ 
+        helper.handleError('Game and Time are required');
         return false;
     }
 
-    helper.sendPost(e.target.action, {name, age}, onThisObjectAdded);
+    helper.sendPost(e.target.action, { game, time, video }, onSpeedrunAdded);
     return false;
-}
+};
 
 //36
 const ThisObjectForm = (props) => {
-    return(
-        <form id="thisobjectForm"
-        onSubmit={(e) => handleThisObject(e, props.triggerReload)}
-        name="thisobjectForm"
-        action="/maker"
-        method="POST"
-        className="thisobjectForm"
->
-        <label htmlFor="name">Name:  </label>
-        <input id="thisobjectName" type="text" name="name" placeholder="ThisObject Name" />
-        <label htmlFor="age">Age:  </label>
-        <input id="thisobjectAge" type="number" min="0" name="age" />
-        <input className="makeThisObjectSubmit" type="submit" value="Make ThisObject" />
-</form>
+    return (
+        <form id="speedrunForm"
+            onSubmit={(e) => handleSubmitSpeedrun(e, props.triggerReload)}
+            name="speedrunForm"
+            action="/maker"
+            method="POST"
+            className="speedrunForm">
 
+            <label htmlFor="game">Game: </label>
+            <input id="speedrunGame" type="text" name="game" placeholder="Game Name" />
+            <label htmlFor="time">Time: </label>
+            <input id="speedrunTime" type="number" min="0" name="time" placeholder="Time in seconds" />
+            <label htmlFor="video">Video Link (optional): </label>
+            <input id="speedrunVideo" type="text" name="video" placeholder="URL..." />
+            <input className="submitSpeedrun" type="submit" value="Submit Speedrun" />
+        </form>
     );
 };
 
 //37 
 const ThisObjectList = (props) => {
-    const [thisobjects, setThisObjects] = useState(props.thisobjects); 
+        const [speedruns, setSpeedruns] = useState(props.thisobjects);
 
     useEffect(() => {
-        const loadThisObjectsFromServer = async () => {
+        const loadSpeedrunsFromServer = async () => {
             const response = await fetch ('/getThisObjects');
             const data = await response.json();
-            setThisObjects(data.thisobjects);
+            setSpeedruns(data.thisobjects);
 
         };
-        loadThisObjectsFromServer();
+         loadSpeedrunsFromServer();
     }, [props.reloadThisObjects]);
 
-    if (thisobjects.length === 0) {
+         if (speedruns.length === 0) {
         return (
-            <div className="thisobjectList">
-                <h3 className="emptyThisObject">No ThisObjects Yet!</h3>
+            <div className="speedrunList">
+                <h3 className="emptySpeedrun">No Speedruns Submitted Yet!</h3>
             </div>
         );
     }
 
-    const thisobjectNodes = thisobjects.map(thisobject => {
-        return(
-            <div key={thisobject.id} className="thisobject">
-                <img src="/assets/img/thisObjectface.jpeg" alt="thisobject face" className="thisobjectFace" />
-                <h3 className="thisobjectName">Name: {thisobject.name}</h3>
-                <h3 className="thisobjectAge">Age: {thisobject.age}</h3>
+    const speedrunNodes = speedruns.map(run => {
+        return (
+            <div key={run._id} className="speedrun">
+                <img src="/assets/img/thisObjectface.jpeg" alt="speedrun icon"  className="speedrunIcon"/>
+                <h3 className="speedrunGame">Game: {run.game}</h3>
+                <h3 className="speedrunTime">Time: {run.time}</h3>
+                    
+                    
+                   {
+                   run.video && (
+                    <h3 className="speedrunVideo">
+                    Video: <a href={run.video} target="_blank" rel="noopener noreferrer">{run.video}</a>
+                    </h3>
+                )}
             </div>
         );
     });
     
     return(
-        <div className="thisobjectList">
-            {thisobjectNodes}
+        <div className="speedrunList">
+            {speedrunNodes}
         </div>
     );
 
@@ -137,10 +147,11 @@ const App = () => {
             <div id="changePassword">
             <ChangePasswordForm />
             </div>
-            <div id="makeThisObject">
+            
+            <div id="makeSpeedrun">
                 <ThisObjectForm triggerReload={() => setReloadThisObjects(!reloadThisObjects)} />
             </div>
-            <div id="thisobjects">
+            <div id="speedruns">
                 <ThisObjectList thisobjects={[]} reloadThisObjects={reloadThisObjects} />
             </div>
         </div>

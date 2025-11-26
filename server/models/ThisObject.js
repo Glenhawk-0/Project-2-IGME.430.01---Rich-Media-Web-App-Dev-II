@@ -15,10 +15,10 @@ const ThisObjectSchema = new mongoose.Schema({
     min: 0,
     required: true,
   },
-    video: {
+  video: {
     type: String,
     trim: true,
-    //required: true, // we may not need
+    // required: true, // we may not need
   },
   owner: {
     type: mongoose.Schema.ObjectId,

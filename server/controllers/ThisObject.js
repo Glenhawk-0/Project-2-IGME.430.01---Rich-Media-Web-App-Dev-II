@@ -21,11 +21,10 @@ const makeThisObject = async (req, res) => {
     const newThisObject = new ThisObject(thisobjectData);
     await newThisObject.save();
     // return res.json({ redirect: '/maker' });
-    return res.status(201).json({ 
-      game: newThisObject.game, 
+    return res.status(201).json({
+      game: newThisObject.game,
       time: newThisObject.time,
       video: newThisObject.video,
-
 
     });
   } catch (err) {
@@ -46,12 +45,28 @@ const getThisObjects = async (req, res) => {
     return res.json({ thisobjects: docs });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ error: 'Error retrieving thisobjects!' });
+    return res.status(500).json({ error: 'Error retrieving submissions!' });
   }
 };
+
+const getAllThisObjects = async (req, res) => {
+  try {
+    const docs = await ThisObject.find({})
+      .select('game time video owner createdDate')
+      .populate('owner', 'username')
+      .lean()
+      .exec();
+
+    return res.json({ allRuns: docs });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Error retrieving all submissions!' });
+  }
+};// endOf getAllThisObject
 
 module.exports = {
   makerPage,
   makeThisObject,
   getThisObjects,
+  getAllThisObjects,
 };

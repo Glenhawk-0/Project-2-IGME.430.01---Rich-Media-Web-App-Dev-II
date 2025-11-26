@@ -47,9 +47,9 @@ nav:nth-child(1) {
     background-color: #66bdff;
 }
 
-.thisobjectForm {
+.speedrunForm  {
     border: 2px solid #338acc;
-    height: 35px;
+    height: auto;
     width: 700px;
     margin-top:0px;
     padding-top:10px;
@@ -58,7 +58,7 @@ nav:nth-child(1) {
     border-top-right-radius: 4px;
 }
 
-.thisobjectForm label {
+.speedrunForm  label {
     display: inline-block;
     width: 75px;
     margin-left: 10px;
@@ -67,11 +67,12 @@ nav:nth-child(1) {
     color: white;
 }
 
-.thisobjectForm input[type=text] {
+.speedrunForm  input[type=text], 
+ .speedrunForm input[type=number]{
     float:left;
 }
 
-.makeThisObjectSubmit {
+.submitSpeedrun  {
     transition: background-color 0.4s ease;
     display: inline;
     width: 90px;
@@ -81,11 +82,11 @@ nav:nth-child(1) {
     text-decoration: none;
 }
 
-.makeThisObjectSubmit:link, .makeThisObjectSubmit:visited, .makeThisObjectSubmit:hover, .makeThisObjectSubmit:active {
+.submitSpeedrun:link, .submitSpeedrun:visited, .submitSpeedrun:hover, .submitSpeedrun:active {
     color: white;
 }
 
-.makeThisObjectSubmit:hover {
+.submitSpeedrun:hover {
     transition: background-color 0.4s ease;
     background-color: #338acc;
 }
@@ -192,7 +193,7 @@ nav:nth-child(1) {
     transform: rotate(330deg);
 }
 
-#thisobjects {
+#speedruns  {
     width: 40%;
     min-width: 400px;
     border: 2px solid #55acee;
@@ -201,7 +202,7 @@ nav:nth-child(1) {
     margin-top: 100px;
 }
 
-.thisobject {
+.speedrun  {
     width: 95%;
     margin: 0 auto;
     margin-top: 2px;
@@ -214,14 +215,14 @@ nav:nth-child(1) {
     overflow: hidden;
 }
 
-.thisobject:hover {
+.speedrun:hover {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
     background-color: #66bfff;
 }
 
-img.thisobjectFace {
+.speedrunIcon  {
     margin-left: 25px;
     margin-right: 10px;
     height: 50px;
@@ -231,7 +232,7 @@ img.thisobjectFace {
     float:left;
 }
 
-h3.emptyThisObject {
+h3.emptySpeedrun  {
     width: 400px;
     font-size: 1.5em;
     margin: 0 auto;
@@ -239,7 +240,7 @@ h3.emptyThisObject {
     margin-top: 18px;
 }
 
-h3.thisobjectName {
+h3.speedrunGame  {
     float:left;
     width: 200px;
     font-weight: bold;
@@ -247,7 +248,7 @@ h3.thisobjectName {
     font-size: 1.5em;
 }
 
-h3.thisobjectAge {
+h3.speedrunTime  {
     float:right;
     text-align: left;
     width: 100px;
@@ -256,11 +257,19 @@ h3.thisobjectAge {
     font-size: 1.5em;
 }
 
-.thisobject:first-child {
+h3.speedrunVideo {
+    width: 90%;
+    clear: both;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.speedrun:first-child {
     margin-top: 10px;
 }
 
-.thisobject
-:last-child {
+
+
+.speedrun:last-child {
     margin-bottom:10px;
 }
