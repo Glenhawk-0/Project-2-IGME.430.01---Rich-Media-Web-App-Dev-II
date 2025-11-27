@@ -3,6 +3,7 @@ const models = require('../models');
 const { ThisObject } = models; // const  ThisObject  = models.ThisObject;
 
 // 32
+const allSpeedrunsPage = (req, res) => res.render('allSpeedruns');
 const makerPage = (req, res) => res.render('app');
 
 const makeThisObject = async (req, res) => {
@@ -57,7 +58,7 @@ const getAllThisObjects = async (req, res) => {
       .lean()
       .exec();
 
-    return res.json({ allRuns: docs });
+    return res.json({ speedruns: docs });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: 'Error retrieving all submissions!' });
@@ -69,4 +70,5 @@ module.exports = {
   makeThisObject,
   getThisObjects,
   getAllThisObjects,
+  allSpeedrunsPage,
 };

@@ -18,6 +18,11 @@ const router = (app) => {
   app.get('/maker', mid.requiresLogin, controllers.ThisObject.makerPage);
   app.post('/maker', mid.requiresLogin, controllers.ThisObject.makeThisObject);
 
+  // final
+  app.get('/allSpeedruns', mid.requiresLogin, controllers.ThisObject.allSpeedrunsPage);
+
+  app.get('/getAllThisObjects', mid.requiresLogin, controllers.ThisObject.getAllThisObjects);
+
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
 
