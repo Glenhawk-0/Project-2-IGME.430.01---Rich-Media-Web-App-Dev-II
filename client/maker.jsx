@@ -154,6 +154,7 @@ const App = () => {
     return(
         
         <div>
+        
             <div id="changePassword" className="barContainer">
            <ChangePasswordForm triggerReload={() => setReloadThisObjects(!reloadThisObjects)} />
             </div>
@@ -164,6 +165,8 @@ const App = () => {
             <div id="speedruns">
                 <ThisObjectList thisobjects={[]} reloadThisObjects={reloadThisObjects} />
             </div>
+
+                <AdBanner />
         </div>
     );
 };
@@ -171,6 +174,14 @@ const App = () => {
 const init = () => {
     const root = createRoot(document.getElementById('app'));
     root.render( <App />);
+};
+
+const AdBanner = () => {
+    return (
+        <div id="adBanner" className="adBanner">
+            <img src="/assets/img/adPlaceholder.jpg" alt="Advertisement" />
+        </div>
+    );
 };
 
 window.onload = init;

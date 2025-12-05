@@ -70,9 +70,21 @@ const App = () => {
     return(
         <div id="allSpeedrunsPage">
             <AllSpeedrunsList reloadSpeedruns={reloadSpeedruns} />
+             <AdBanner />
         </div>
     );
 };
+
+//ad
+const AdBanner = () => {
+    return (
+        <div id="adBanner" className="adBanner">
+            <img src="/assets/img/adPlaceholder.jpg" alt="Advertisement" />
+        </div>
+    );
+};
+//
+
 
 const init = () => {
     const root = createRoot(document.getElementById('app'));

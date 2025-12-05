@@ -1,3 +1,4 @@
+const { ReturnDocument } = require('mongodb');
 const models = require('../models');
 
 const { Account } = models;
@@ -100,11 +101,29 @@ const changePassword = async (req, res) => {
   });
 };// end of changePassword
 
+const togglePremium = async (req, res) => {
+  try {
+    const account = await Account.findById( req.session.account._id).exec();
+
+    account.premium = !account.premium;
+    await account.save();
+
+    req.session.account.premium = account.premium;
+
+    return res.json({ premium: account.premium});
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({error: 'Couldnt Toggle premium status'});
+  }
+
+};
+
 module.exports = {
   loginPage,
   login,
   logout,
   signup,
   changePassword,
+  togglePremium,
 
 };

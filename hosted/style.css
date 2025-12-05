@@ -423,3 +423,48 @@ h3.speedrunVideo {
 .barForm .submitSpeedrun:hover {
     background-color: #338acc;
 }
+
+
+/*ad*/
+/*
+.adBanner {
+    width: 100%;
+    background-color: #e8e8e8;
+    border-bottom: 2px solid #ccc;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.adBanner img {
+    max-width: 600px;
+    width: 90%;
+    height: auto;
+    border-radius: 6px;
+}*/
+
+#adBanner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 80px;
+
+    background-color: #ffffff;
+    border-top: 2px solid #338acc;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+    /*padding: 5px 0;*/
+}
+
+#adBanner img {
+    /*max-height: 70px;*/
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        
+    display: block;
+}

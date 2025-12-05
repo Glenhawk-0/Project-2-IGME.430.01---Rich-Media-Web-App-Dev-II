@@ -96,17 +96,25 @@ const init = () => {
 
     loginButton.addEventListener('click', (e) => {
         e.preventDefault();
-        root.render(<LoginWindow /> );
+        root.render(<div>  <LoginWindow />  <AdBanner /> </div>);
         return false;
     });
 
     signupButton.addEventListener('click', (e) => {
         e.preventDefault();
-        root.render( <SignupWindow /> );
+        root.render(<div>     <SignupWindow />  <AdBanner /></div>);
         return false;
     });
 
-    root.render( <LoginWindow /> );
+    root.render(<div> <LoginWindow />  <AdBanner /> </div>);
+};
+
+const AdBanner = () => {
+    return (
+        <div id="adBanner" className="adBanner">
+            <img src="/assets/img/adPlaceholder.jpg" alt="Advertisement" />
+        </div>
+    );
 };
 
 window.onload = init;
