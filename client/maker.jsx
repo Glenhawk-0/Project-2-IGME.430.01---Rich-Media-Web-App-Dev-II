@@ -29,7 +29,7 @@ const ThisObjectForm = (props) => {
             name="speedrunForm"
             action="/maker"
             method="POST"
-            className="speedrunForm">
+            className="barForm">
 
             <label htmlFor="game">Game: </label>
             <input id="speedrunGame" type="text" name="game" placeholder="Game Name" />
@@ -110,19 +110,29 @@ const handlePasswordChange = (e) => {
     return false;
   }
 
-  helper.sendPost(e.target.action, { currentPass, newPass, newPass2 });
+ helper.sendPost(e.target.action, { currentPass, newPass, newPass2 }, () => {
+    // success
+    helper.handleError("Password updated successfully!", true);
+
+ 
+    
+    setTimeout(() => {
+      onPasswordChanged();
+    }, 1000);
+  });
+
   return false;
 };
 
 
-const ChangePasswordForm = () => {
+const ChangePasswordForm = (props) => {
   return (
     <form id="changePassForm"
-      onSubmit={handlePasswordChange}
+   onSubmit={(e) => handlePasswordChange(e, props.triggerReload)}
       name="changePassForm"
       action="/changePassword"
       method="POST"
-      className="changePassForm">
+      className="barForm">
 
       <label htmlFor="currentPass">Current Password: </label>
       <input id="currentPass" type="password" name="currentPass" placeholder="Current Password" />
@@ -144,11 +154,11 @@ const App = () => {
     return(
         
         <div>
-            <div id="changePassword">
-            <ChangePasswordForm />
+            <div id="changePassword" className="barContainer">
+           <ChangePasswordForm triggerReload={() => setReloadThisObjects(!reloadThisObjects)} />
             </div>
             
-            <div id="makeSpeedrun">
+            <div id="makeSpeedrun" className="barContainer">
                 <ThisObjectForm triggerReload={() => setReloadThisObjects(!reloadThisObjects)} />
             </div>
             <div id="speedruns">
