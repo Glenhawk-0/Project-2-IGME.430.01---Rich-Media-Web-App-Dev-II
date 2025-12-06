@@ -64,6 +64,23 @@ const AllSpeedrunsList  = (props) => {
 
 };//end of ThisObjectList
 
+
+//
+const handlePremiumToggle = async () => {
+    const response = await fetch ('/togglePremium', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+    });
+
+    const data = await response.json();
+
+    window.accountPremium = data.premium;
+
+    window.location.reload();
+}
+//
+
+
 //38 
 const App = () => {
     const [reloadSpeedruns, setReloadSpeedruns] = useState(false);
@@ -77,17 +94,34 @@ const App = () => {
 
 //ad
 const AdBanner = () => {
-    return (
+
+    
+    //this too absolutely make sure its boolean
+  const isPremium = !!window.accountPremium;
+ console.log ("isPremium: " , window.accountPremium);
+        if (isPremium == true ){
+            return null;
+        }else{
+    
+    
+    return (  
         <div id="adBanner" className="adBanner">
             <img src="/assets/img/adPlaceholder.jpg" alt="Advertisement" />
+            <h1><isPremium/></h1>
         </div>
+        
     );
+ }
 };
 //
 
 
 const init = () => {
     const root = createRoot(document.getElementById('app'));
+    document.getElementById('premiumToggle').addEventListener('change', handlePremiumToggle);
+    const premiumDiv = document.getElementById("premiumData");
+window.accountPremium = premiumDiv?.dataset?.premium === "true";
+
     root.render( <App />);
 };
 

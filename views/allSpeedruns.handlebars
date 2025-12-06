@@ -6,10 +6,25 @@
   <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 </head>
 <body>
-  <nav><a href="/maker"><img id="logo" src="/assets/img/face.png" alt="face logo"/></a>
+  <nav>
+    <a href="/maker">
+     {{#if account.premium}}
+    <img id="logo" src="/assets/img/face2.png" alt="face logo"/>
+    {{else}}
+    <img id="logo" src="/assets/img/face.png" alt="face logo"/>
+    {{/if}}
+  </a>
     <div class="navlink"><a href="/maker">My Speedruns</a></div>
   <div class="navlink"><a href="/allSpeedruns">All Speedruns</a></div>
     <div class="navlink"><a href="/logout">Log out</a></div>
+    
+    <div class="navlink premiumToggleWrapper">
+    <label class="premiumLabel">
+        <input id="premiumToggle" type="checkbox" {{#if account.premium}}checked{{/if}} />
+        Premium
+    </label>
+</div>
+
   </nav>
 
   <section id="app">
@@ -21,6 +36,12 @@
     <h3><span id="errorMessage"></span></h3>
     <img id="thisobject" src="assets/img/thisObject.png" alt="thisobject"/>
   </div>
-  <script src="/assets/allSpeedrunsBundle.js"></script>
+<div id="premiumData" 
+     data-premium="{{#if account.premium}}true{{else}}false{{/if}}">
+</div>
+<script src="/assets/allSpeedrunsBundle.js"></script>
+
+
+
 </body>
 </html>

@@ -1,9 +1,11 @@
-const { ReturnDocument } = require('mongodb');
+// const { ReturnDocument } = require('mongodb');
 const models = require('../models');
 
 const { Account } = models;
 
-const loginPage = (req, res) => res.render('login');
+const loginPage = (req, res) => {
+  res.render('login');
+};
 
 const logout = (req, res) => {
   req.session.destroy();
@@ -23,7 +25,14 @@ const login = (req, res) => {
       return res.status(401).json({ error: 'Wrong username or password!' });
     }
 
-    req.session.account = Account.toAPI(account);
+    // req.session.account = Account.toAPI(account);
+    // // causing proplems, not allowing premium.
+
+    req.session.account = {
+      username: account.username,
+      _id: account._id,
+      premium: account.premium,
+    };
 
     return res.json({ redirect: '/maker' });
   });
@@ -103,20 +112,21 @@ const changePassword = async (req, res) => {
 
 const togglePremium = async (req, res) => {
   try {
-    const account = await Account.findById( req.session.account._id).exec();
+    const account = await Account.findById(req.session.account._id).exec();
 
     account.premium = !account.premium;
     await account.save();
 
     req.session.account.premium = account.premium;
 
-    return res.json({ premium: account.premium});
+    return res.json({ premium: account.premium });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({error: 'Couldnt Toggle premium status'});
+    return res.status(500).json({ error: 'Couldnt Toggle premium status' });
   }
-
 };
+// dj;lkgjfds;kf
+// res.render('app', { premium: req.session.account.premium });
 
 module.exports = {
   loginPage,
