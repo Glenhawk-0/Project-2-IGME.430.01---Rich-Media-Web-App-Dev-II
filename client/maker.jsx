@@ -64,6 +64,13 @@ const ThisObjectList = (props) => {
         );
     }
 
+    //delete 
+
+    const handleDelete = async (id, triggerReload) => {
+  await fetch(`/deleteSpeedrun/${id}`, { method: 'DELETE' });
+  triggerReload();
+};
+
     const speedrunNodes = speedruns.map(run => {
         return (
             <div key={run._id} className="speedrun">
@@ -78,6 +85,12 @@ const ThisObjectList = (props) => {
                     Video: <a href={run.video} target="_blank" rel="noopener noreferrer">{run.video}</a>
                     </h3>
                 )}
+
+            <button className="deleteButton" onClick={() => handleDelete(run._id, props.triggerReload)}>
+            Delete
+            </button>
+
+
             </div>
         );
     });

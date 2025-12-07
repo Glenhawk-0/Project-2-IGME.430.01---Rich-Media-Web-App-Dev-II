@@ -50,6 +50,22 @@ nav:nth-child(1) {
     background-color: #1f6fa8;
 }
 
+.deleteButton {
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 6px 12px;
+    background-color: #ff4d4d;
+    border: 1px solid #cc0000;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.deleteButton:hover {
+    background-color: #cc0000;
+}
+
 
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
     color: white;
