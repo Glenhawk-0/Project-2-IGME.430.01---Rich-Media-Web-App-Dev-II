@@ -37,13 +37,12 @@ nav:nth-child(1) {
     background-color: #338acc;
     color: white;
     border: none;
-    border-radius: 6px;
+    padding: 5px;
     padding-top: 12px;
     padding-left: 20px;
-    font-size: 1.1em;
+    font-size: 1.3em;
     cursor: pointer;
-    margin-top: -4px;  
-        font-size: 1.3em;
+
     float: left;
 }
 
