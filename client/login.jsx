@@ -46,23 +46,6 @@ const handleSignup = (e) => {
 
 }
 
-
-//
-const handlePremiumToggle = async () => {
-    const response = await fetch ('/togglePremium', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-    });
-
-    const data = await response.json();
-
-    window.accountPremium = data.premium;
-
-    window.location.reload();
-}
-//
-
-
 // 20
 const LoginWindow = (props) => {
     return(
@@ -108,8 +91,6 @@ const SignupWindow = (props) => {
 const init = () => {
     const loginButton = document.getElementById('loginButton');
     const signupButton = document.getElementById('signupButton');
-const premiumDiv = document.getElementById("premiumData");
-window.accountPremium = premiumDiv?.dataset?.premium === "true";
 
     const root = createRoot(document.getElementById('content'));
 
@@ -124,27 +105,16 @@ window.accountPremium = premiumDiv?.dataset?.premium === "true";
         root.render(<div>     <SignupWindow />  <AdBanner /></div>);
         return false;
     });
-    document.getElementById('premiumToggle').addEventListener('change', handlePremiumToggle);
 
     root.render(<div> <LoginWindow />  <AdBanner /> </div>);
 };
 
 const AdBanner = () => {
-    
-    //this too absolutely make sure its boolean
-  const isPremium = !!window.accountPremium;
-
-        if (isPremium){
-            return null;
-        }else{
-    
-    
-    return (  
+    return (
         <div id="adBanner" className="adBanner">
             <img src="/assets/img/adPlaceholder.jpg" alt="Advertisement" />
         </div>
     );
- }
 };
 
 window.onload = init;

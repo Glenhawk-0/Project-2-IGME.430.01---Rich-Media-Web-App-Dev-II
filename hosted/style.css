@@ -468,7 +468,3 @@ h3.speedrunVideo {
     object-fit: cover;        
     display: block;
 }
-
-.adBanner.hidden {
-    display: none !important;
-}

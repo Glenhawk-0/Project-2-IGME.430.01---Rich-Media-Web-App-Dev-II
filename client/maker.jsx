@@ -21,21 +21,6 @@ const handleSubmitSpeedrun = (e, onSpeedrunAdded) => {
     return false;
 };
 
-//
-const handlePremiumToggle = async () => {
-    const response = await fetch ('/togglePremium', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-    });
-
-    const data = await response.json();
-
-    window.accountPremium = data.premium;
-
-    window.location.reload();
-}
-//
-
 //36
 const ThisObjectForm = (props) => {
     return (
@@ -186,33 +171,17 @@ const App = () => {
     );
 };
 
-
-
 const init = () => {
     const root = createRoot(document.getElementById('app'));
-    document.getElementById('premiumToggle').addEventListener('change', handlePremiumToggle);
-    const premiumDiv = document.getElementById("premiumData");
-window.accountPremium = premiumDiv?.dataset?.premium === "true";
-
     root.render( <App />);
 };
 
 const AdBanner = () => {
-    
-    //this too absolutely make sure its boolean
-  const isPremium = !!window.accountPremium;
-
-        if (isPremium){
-            return null;
-        }else{
-    
-    
-    return (  
+    return (
         <div id="adBanner" className="adBanner">
             <img src="/assets/img/adPlaceholder.jpg" alt="Advertisement" />
         </div>
     );
- }
 };
 
 window.onload = init;
