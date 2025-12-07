@@ -177,7 +177,8 @@ const App = () => {
             </div>
 
             <div id="speedruns">
-                <ThisObjectList thisobjects={[]} reloadThisObjects={reloadThisObjects} />
+                <ThisObjectList  thisobjects={[]} reloadThisObjects={reloadThisObjects} 
+                triggerReload={() => setReloadThisObjects(!reloadThisObjects)}/>
             </div>
 
                 <AdBanner />
