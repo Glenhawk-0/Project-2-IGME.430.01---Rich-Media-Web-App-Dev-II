@@ -24,6 +24,13 @@ const router = (app) => {
   app.get('/getAllThisObjects', mid.requiresLogin, controllers.ThisObject.getAllThisObjects);
 
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+
+
+  //premium 
+  app.post('/togglePremium', mid.requiresLogin, controllers.Account.togglePremium);
+  app.get('/getAccount', mid.requiresLogin, controllers.Account.getAccount);
+
+
 };
 
 module.exports = router;

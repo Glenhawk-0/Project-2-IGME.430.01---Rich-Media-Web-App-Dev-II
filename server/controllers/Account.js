@@ -116,6 +116,24 @@ const togglePremium = async (req, res) => {
   }
 };
 
+
+//get account for premium 
+const getAccount = (req, res) => {
+  try {
+    // If user not logged in  then dont bother. 
+    if (!req.session || !req.session.account) {
+      return res.json({ 
+          account: null 
+        });
+    }
+
+    return res.json({ account: req.session.account });
+  } catch (err) {
+    console.error('getAccount error', err);
+    return res.status(500).json({ error: 'Could not get account' });
+  }
+}
+
 module.exports = {
   loginPage,
   login,
@@ -123,5 +141,5 @@ module.exports = {
   signup,
   changePassword,
   togglePremium,
-
+getAccount,
 };
