@@ -78,7 +78,7 @@ const App = () => {
 //ad
 const AdBanner = () => {
     return (
-        <div id="adBanner" className="adBanner">
+        <div  className="adBanner">
             <img src="/assets/img/adPlaceholder.jpg" alt="Advertisement" />
         </div>
     );
