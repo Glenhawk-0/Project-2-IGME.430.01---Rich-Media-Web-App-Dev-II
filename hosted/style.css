@@ -299,6 +299,7 @@ h3.speedrunVideo {
 .speedrun:last-child {
     margin-bottom:10px;
 }
+
 /*
 #changePassword {
     width: 100%;
@@ -425,22 +426,8 @@ h3.speedrunVideo {
 }
 
 
-/*ad*/
-/*
-.adBanner {
-    width: 100%;
-    background-color: #e8e8e8;
-    border-bottom: 2px solid #ccc;
-    padding: 10px 0;
-    text-align: center;
-}
 
-.adBanner img {
-    max-width: 600px;
-    width: 90%;
-    height: auto;
-    border-radius: 6px;
-}*/
+
 
 #adBanner {
     position: fixed;
