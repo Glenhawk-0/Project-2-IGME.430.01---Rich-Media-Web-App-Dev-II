@@ -1,4 +1,3 @@
-const { ReturnDocument } = require('mongodb');
 const models = require('../models');
 
 const { Account } = models;
