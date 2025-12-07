@@ -38,10 +38,13 @@ nav:nth-child(1) {
     color: white;
     border: none;
     border-radius: 6px;
-    padding: 6px 12px;
+    padding-top: 12px;
+    padding-left: 20px;
     font-size: 1.1em;
     cursor: pointer;
     margin-top: -4px;  
+        font-size: 1.3em;
+    float: left;
 }
 
 .premiumButton:hover {
