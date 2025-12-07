@@ -33,24 +33,21 @@ nav:nth-child(1) {
     float: left;
 }
 
-.navlink button {
-    padding: 5px;
-    padding-top: 12px;
-    padding-left: 20px;
+.premiumButton {
+    background-color: #338acc;
     color: white;
-    font-size: 1.3em;
-    float: left;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: -4px;  
 }
 
-.formSubmit {
-    padding: 5px;
-    padding-top: 12px;
-    padding-left: 20px;
-    max-height: 50px;
-    color: white;
-    font-size: 1.3em;
-    float: left;
+.premiumButton:hover {
+    background-color: #1f6fa8;
 }
+
 
 .navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
     color: white;
