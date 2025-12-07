@@ -102,19 +102,18 @@ const changePassword = async (req, res) => {
 
 const togglePremium = async (req, res) => {
   try {
-    const account = await Account.findById( req.session.account._id).exec();
+    const account = await Account.findById(req.session.account._id).exec();
 
     account.premium = !account.premium;
     await account.save();
 
     req.session.account.premium = account.premium;
 
-    return res.json({ premium: account.premium});
+    return res.json({ premium: account.premium });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({error: 'Couldnt Toggle premium status'});
+    return res.status(500).json({ error: 'Couldnt Toggle premium status' });
   }
-
 };
 
 module.exports = {
