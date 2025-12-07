@@ -30,6 +30,9 @@ const router = (app) => {
   app.post('/togglePremium', mid.requiresLogin, controllers.Account.togglePremium);
   app.get('/getAccount', mid.requiresLogin, controllers.Account.getAccount);
 
+  // delete
+  app.delete('/deleteSpeedrun/:id', mid.requiresLogin, controllers.ThisObject.deleteSpeedrun);
+
 
 };
 

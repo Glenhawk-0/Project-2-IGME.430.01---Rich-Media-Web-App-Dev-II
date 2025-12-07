@@ -65,10 +65,35 @@ const getAllThisObjects = async (req, res) => {
   }
 };// endOf getAllThisObject
 
+
+const deleteSpeedrun = async (req, res) => {
+  try {
+    const speedrunId = req.params.id;
+
+    // you can only delete your own things 
+    const deleted = await ThisObject.findOneAndDelete({
+      _id: speedrunId,
+      owner: req.session.account._id,
+    }).exec();
+
+    if (!deleted) {
+      return res.status(404).json({ error: 'Speedrun not found or not authorized.' });
+    }
+
+    return res.json({ message: 'Speedrun deleted successfully!' });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Error deleting speedrun.' });
+  }
+};
+
+
+
 module.exports = {
   makerPage,
   makeThisObject,
   getThisObjects,
   getAllThisObjects,
   allSpeedrunsPage,
+  deleteSpeedrun,
 };
