@@ -162,7 +162,7 @@ const App = () => {
             <div id="makeSpeedrun" className="barContainer">
                 <ThisObjectForm triggerReload={() => setReloadThisObjects(!reloadThisObjects)} />
             </div>
-            
+
             <div id="speedruns">
                 <ThisObjectList thisobjects={[]} reloadThisObjects={reloadThisObjects} />
             </div>
@@ -185,12 +185,12 @@ const AdBanner = () => {
     );
 };
 
+// needed the assistance of AI for this. i apologize. 
 const  refreshPremiumUI =  async  () => {
     const res = await fetch('/getAccount');
     const { account } = await res.json();
     if (!account) return;
 
-    // Update profile picture
     const logo = document.getElementById('logo');
     if (account.premium) {
       logo.src = '/assets/img/face2.png';
@@ -198,11 +198,10 @@ const  refreshPremiumUI =  async  () => {
       logo.src = '/assets/img/face.png';
     }
 
-    // Update button text
+  
     const btn = document.getElementById('premiumToggle');
     btn.textContent = account.premium ? "Premium: ON" : "Premium: OFF";
 
-    // Hide or show ads
     const ad = document.querySelector('.adBanner');
     if (ad) ad.style.display = account.premium ? 'none' : 'flex';
   }
@@ -217,7 +216,7 @@ const  refreshPremiumUI =  async  () => {
     document.getElementById('premiumToggle')
       .addEventListener('click', togglePremium);
   });
-
+// AI CODE OVER. sources.
 
 window.onload = init;
 
@@ -225,38 +224,3 @@ window.onload = init;
 
 
 
-/*
-
-  async function refreshPremiumUI() {
-    const res = await fetch('/getAccount');
-    const { account } = await res.json();
-    if (!account) return;
-
-    // Update profile picture
-    const logo = document.getElementById('logo');
-    if (account.premium) {
-      logo.src = '/assets/img/face2.png';
-    } else {
-      logo.src = '/assets/img/face.png';
-    }
-
-    // Update button text
-    const btn = document.getElementById('premiumToggle');
-    btn.textContent = account.premium ? "Premium: ON" : "Premium: OFF";
-
-    // Hide or show ads
-    const ad = document.querySelector('.adBanner');
-    if (ad) ad.style.display = account.premium ? 'none' : 'flex';
-  }
-
-  async function togglePremium() {
-    await fetch('/togglePremium', { method: 'POST' });
-    refreshPremiumUI();
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    refreshPremiumUI();
-    document.getElementById('premiumToggle')
-      .addEventListener('click', togglePremium);
-  });
-*/
